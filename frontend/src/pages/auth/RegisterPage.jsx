@@ -24,7 +24,7 @@ export function RegisterPage() {
       await register(form);
       navigate("/dashboard", { replace: true });
     } catch (requestError) {
-      setError(requestError.response?.data?.detail || "Registration failed.");
+      setError(requestError.response?.data?.detail || requestError.message || "Registration failed.");
     } finally {
       setIsSubmitting(false);
     }

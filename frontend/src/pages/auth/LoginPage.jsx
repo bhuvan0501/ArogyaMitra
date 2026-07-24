@@ -23,8 +23,8 @@ export function LoginPage() {
     try {
       await login(form);
       navigate("/dashboard", { replace: true });
-    } catch {
-      setError("Invalid email or password.");
+    } catch (err) {
+      setError(err.response?.data?.detail || err.message || "Invalid email or password.");
     } finally {
       setIsSubmitting(false);
     }
