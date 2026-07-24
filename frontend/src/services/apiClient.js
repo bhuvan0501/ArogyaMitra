@@ -3,8 +3,10 @@ import axios from "axios";
 const STORAGE_KEY = "accessToken";
 export const AUTH_EXPIRED_EVENT = "arogyamitra:auth-expired";
 
+const DEFAULT_API_BASE_URL = "https://arogyamitra-3xl0.onrender.com/api/v1";
+
 export const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_BASE_URL || DEFAULT_API_BASE_URL,
   headers: {
     "Content-Type": "application/json"
   }
