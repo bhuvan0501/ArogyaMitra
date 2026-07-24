@@ -15,13 +15,10 @@ from app.models import workout_plan  # noqa: F401
 def create_app() -> FastAPI:
   app = FastAPI(title=settings.APP_NAME)
 
-  origins = settings.cors_origins
-  is_wildcard = "*" in origins
-
   app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if is_wildcard else origins,
-    allow_credentials=False if is_wildcard else True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
   )
