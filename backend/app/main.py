@@ -25,6 +25,11 @@ def create_app() -> FastAPI:
 
   app.include_router(api_router, prefix="/api/v1")
 
+  @app.get("/")
+  @app.head("/")
+  def root_health():
+    return {"status": "ok"}
+
   @app.on_event("startup")
   def on_startup() -> None:
     Base.metadata.create_all(bind=engine)
